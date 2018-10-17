@@ -1,3 +1,14 @@
+## 1.13.1
+
+**Existing Geocoder Changes**
+* OSM - Fix deprecation by using HTTPS
+
+## 1.13.0
+
+**Existing Geocoder Changes**
+* Ipstack: Fix success where city can be nil
+* FCC: Update to new API
+
 ## 1.12.0
 
 **Existing Geocoder Changes**
