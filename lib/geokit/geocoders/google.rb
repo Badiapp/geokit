@@ -108,7 +108,8 @@ module Geokit
 
       def self.construct_components_string_from_options(components={})
         unless components.empty?
-          "&components=#{components.to_a.map { |pair| pair.join(':').downcase }.join(CGI.escape('|'))}"
+          escaped_components = Geokit::Inflector.url_escape(components.to_a.map { |pair| pair.join(":").downcase }.join("|"))
+          "&components=#{escaped_components}"
         end
       end
 
@@ -215,6 +216,7 @@ module Geokit
             loc.country = comp['long_name']
           when types.include?('administrative_area_level_2')
             loc.district = comp['long_name']
+            loc.county = comp['long_name']
           when types.include?('neighborhood')
             loc.neighborhood = comp['short_name']
           # Use either sublocality or admin area level 3 if google does not return a city
